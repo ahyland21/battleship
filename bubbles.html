@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <p id="bubbly"></p>
+
+    <script>
+        var scores = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54, 48, 69, 34, 55, 51, 52, 44, 51, 69, 64, 66, 55, 52, 61, 46, 31, 57, 52, 44, 18, 41, 53, 55, 61, 51, 44];
+        var costs = [.25, .27, .25, .25, .25, .25, .33, .31, .25, .29, .27, .22, .31, .25, .25, .33, .21, .25, .25, .25, .28, .25, .24, .22, .20, .25, .30, .25, .24, .25, .25, .25, .27, .25, .26, .29];
+        var text = "";
+        for (var i = 0; i < scores.length; i++) {
+            text += 'Bubble Score #' + i + ": "+ scores[i] + "<br>";
+        }
+        document.getElementById("bubbly").innerHTML = text;
+
+        document.write('Number of Tests: ' + scores.length + "<br>");
+
+        var maxValue = Math.max.apply(null, scores);
+        document.write('Highest Score (JS): ' + maxValue + "<br>");
+
+        var maxValue = Math.max(...scores);
+        document.write('Highest Score (ES6): ' + maxValue + '<br>');
+
+        var minValue = Math.min(...scores);
+        document.write('Lowest Score (ES6): ' + minValue + '<br>');
+
+        //
+        // create array that will hold indexes of highest scores
+        //  loop scores that find indexes that equal maxValue
+        //  for each one, append index of score to highest score array
+        var maxScoreIdx = [];
+        scores.forEach((value, index)=> {
+            if(value == maxValue) {
+                maxScoreIdx.push(index);
+            }
+        })
+        document.write('Solutions with Highest Score: ' + maxScoreIdx + '<br>');
+
+        var minScoreIdx = [];
+        scores.forEach((value, index)=> {
+            if(value == minValue) {
+                minScoreIdx.push(index);
+            }
+        })
+        document.write('Soltutions with Lowest Score: ' + minScoreIdx + '<br>');
+
+        function getMostCostEffectiveSolution(scores, costs, maxValue) {
+            var cost = 100;
+            var index;
+            for (var i = 0; i < scores.length; i++) {
+                if (scores[i] == maxValue) {
+                    if (cost > costs[i]) {
+                        index = i;
+                        cost = costs[i];
+                    }
+
+                }
+            }
+            return index;
+        }
+        var mostCostEffectvive = getMostCostEffectiveSolution(scores, costs, maxValue);
+        document.write('Bubble Solution #' + mostCostEffectvive + ' is the most cost effective' + '<br>')
+
+        function getMostCostEffectiveSolution(solutionScore, lowestCost, highScore) {
+            var cost = 100;
+            var index;
+            for (var i = 0; i < scores.length; i++) {
+                if (solutionScore[i] == highScore) {
+                    if (cost > lowestCost[i]) {
+                        index = i;
+                        cost = lowestCost[i];
+                    }
+
+                }
+            }
+            return index;
+        }
+        var mostCostEffectvive = getMostCostEffectiveSolution(scores, costs, maxValue);
+        document.write('CHANGED PARAMETERS | Bubble Solution #' + mostCostEffectvive + ' is the most cost effective')
+    </script>
+
+</body>
+
+</html>

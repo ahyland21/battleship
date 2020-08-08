@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>My First Heading</h1>
+    <p>My first paragraph.</p>
+
+</body>
+<script>
+    var taxi = {
+        make: "Webville Motors",
+        model: "Taxi",
+        year: 1955,
+        color: "yellow",
+        passengers: 4,
+        convertible: false,
+        mileage: 281341
+    };
+    function prequal(car) {
+        if (car.mileage > 10000) {
+            return false;
+        } else if (car.year > 1960) {
+            return false;
+        }
+        return true;
+    }
+    var worthALook = prequal(taxi);
+    if (worthALook) {
+        console.log("You gotta check out this " + taxi.make + " " + taxi.model);
+    } else {
+        console.log("You should really pass on the " + taxi.make + " " + taxi.model);
+    }
+    var minivan = {
+        make: "Webville Motors",
+        model: "Minivan",
+        year: 2000,
+        color: "blue",
+        passengers: 4,
+        convertible: false,
+        mileage: 1
+    };
+    var itsAFuckingMinivan = prequal(minivan);
+    if (itsAFuckingMinivan) {
+        console.log("You gotta check out this " + minivan.make + " " + minivan.model);
+    } else {
+        console.log("You should really pass on the " + minivan.make + " " + minivan.model);
+    }
+    var cadi = {
+        make: "GM",
+        model: "Cadillac",
+        year: 1955,
+        color: "tan",
+        passengers: 5,
+        convertible: false,
+        mileage: 12892
+    };
+    var fiat = {
+        make: "Fiat",
+        model: "500",
+        year: 1957,
+        color: "Medium Blue",
+        passengers: 2,
+        convertible: false,
+        mileage: 88000
+    };
+    var chevy = {
+        make: "Chevy",
+        model: "Bel Air",
+        year: 1957,
+        color: "red",
+        passengers: 2,
+        convertible: false,
+        mileage: 1021
+    };
+    var WAL1 = prequal(cadi);
+    if (WAL1) {
+        console.log('Check out this ' + cadi.make + ' ASAP');
+    } else {
+        console.log('Hard pass on that ' + cadi.make)
+    }
+
+    var WAL2 = prequal(fiat);
+    if (WAL2) {
+        console.log('Check out this ' + fiat.make + ' ASAP');
+    } else {
+        console.log('Hard pass on that ' + fiat.make)
+    }
+
+    var WAL3 = prequal(chevy);
+    if (WAL3) {
+        console.log('Check out this ' + chevy.make + ' ASAP');
+    } else {
+        console.log('Hard pass on that ' + chevy.make)
+    }
+
+
+
+
+    function getSecret(file, secretPassword) {
+        file.opened = file.opened + 1;
+        if (secretPassword == file.password) {
+            return file.contents;
+        }
+        else {
+            return "Invalid password! No secret for you.";
+        }
+    }
+    function setSecret(file, secretPassword, secret) {
+        if (secretPassword == file.password) {
+            file.opened = 0;
+            file.contents = secret;
+        }
+    }
+    var superSecretFile = {
+        level: "classified",
+        opened: 0,
+        password: 'bam',
+        contents: "Dr. Evel's next meeting is in Detroit."
+    };
+    var secret = getSecret(superSecretFile, 'bam');
+    console.log(secret);
+    setSecret(superSecretFile, 2, "Dr. Evel's next meeting is in Philadelphia.");
+    secret = getSecret(superSecretFile, 2);
+    console.log(secret);
+</script>
+
+</html>

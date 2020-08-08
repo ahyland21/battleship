@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Eight Ball</title>
+    <meta charset="utf-8">
+    <script>
+        var eightBall = {
+            index: 0,
+            advice: ["yes", "no", "maybe", "not a chance"],
+            random: function() { return Math.floor(Math.random() * this.advice.length) },
+            shake: function () {
+                this.index = this.index + this.random();
+                if (this.index >= this.advice.length) {
+                    this.index = 0;
+                }
+            },
+            look: function () {
+                return this.advice[this.index];
+            }
+        };
+        eightBall.shake();
+        alert(eightBall.look());
+    </script>
+</head>
+
+<body></body>
+
+</html>

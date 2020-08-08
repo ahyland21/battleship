@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Car with Drive</title>
+    <meta charset="utf-8">
+    <script>
+        var fiat = {
+            make: "Fiat",
+            model: "500",
+            year: 1957,
+            color: "Medium Blue",
+            passengers: 2,
+            convertible: false,
+            mileage: 88000,
+            started: false,
+            fuel: 3,
+            fuelTickFn: function() {
+                if (this.fuel < 1) {
+                    this.stop();
+                    return
+                }
+                this.fuel = this.fuel -1;
+                console.log("drove a mile", this.fuel);
+            },
+            start: function () {
+                this.fuelTicker = window.setInterval(this.fuelTickFn, 1000)
+                if (this.fuel == 0) {
+                    alert("The car is on empty, fill up before starting!");
+                } else {
+                    this.started = true;
+                }
+            },
+            stop: function () {
+                window.clearInterval(this.fuelTicker)
+                console.log("stopped")
+                this.started = false;
+            },
+            drive: function () {
+                if (this.started) {
+                    if (this.fuel > 0) {
+                        alert('Zoom, zoom ' + this.make + ' ' + this.model + '!');
+                        this.fuel = this.fuel - 1;
+                    } else {
+                        alert('Uh oh, out of fuel for the ' + this.make + ' ' + this.model)
+                        this.stop();
+                    }
+                } else {
+                    alert('You need to start the ' + this.make + ' ' + this.model + ' engine first.');
+                }
+            },
+            addFuel: function (amount) {
+                this.fuel = this.fuel + amount;
+                console.log(this.fuel)
+            }
+        };
+        fiat.addFuel(10);
+        fiat.start();
+        fiat.drive();
+        fiat.drive();
+        fiat.drive();
+        fiat.drive();
+        // fiat.stop();
+
+        // var cadi = {
+        //     make: "GM",
+        //     model: "Cadillac",
+        //     year: 1955,
+        //     color: "tan",
+        //     passengers: 5,
+        //     convertible: false,
+        //     mileage: 12892,
+        //     started: false,
+        //     start: function () {
+        //         this.started = true;
+        //     },
+        //     stop: function () {
+        //         this.started = false;
+        //     },
+        //     drive: function () {
+        //         if (this.started) {
+        //             alert('Zoom, zoom ' + this.make + ' ' + this.model + '!');
+        //         } else {
+        //             alert('You need to start the ' + this.make + ' ' + this.model + ' engine first.');
+        //         }
+        //     }
+        // };
+        // cadi.drive();
+        // cadi.start();
+        // cadi.drive();
+        // cadi.stop();
+
+
+
+        // var chevy = {
+        //     make: "Chevy",
+        //     model: "Bel Air",
+        //     year: 1957,
+        //     color: "red",
+        //     passengers: 2,
+        //     convertible: false,
+        //     mileage: 1021,
+        //     started: false,
+        //     start: function () {
+        //         this.started = true;
+        //     },
+        //     stop: function () {
+        //         this.started = false;
+        //     },
+        //     drive: function () {
+        //         if (this.started) {
+        //             alert('Zoom, zoom ' + this.make + ' ' + this.model + '!');
+        //         } else {
+        //             alert('You need to start the ' + this.make + ' ' + this.model + ' engine first.');
+        //         }
+        //     }
+        // };
+        // chevy.drive();
+        // chevy.stop();
+        // chevy.drive();
+        // chevy.start();
+
+
+
+        // var taxi = {
+        //     make: "Webville Motors",
+        //     model: "Taxi",
+        //     year: 1955,
+        //     color: "yellow",
+        //     passengers: 4,
+        //     convertible: false,
+        //     mileage: 281341,
+        //     started: false,
+        //     start: function () {
+        //         this.started = true;
+        //     },
+        //     stop: function () {
+        //         this.started = false;
+        //     },
+        //     drive: function () {
+        //         if (this.started) {
+        //             alert('Zoom, zoom ' + this.make + ' ' + this.model + '!');
+        //         } else {
+        //             alert('You need to start the ' + this.make + ' ' + this.model + ' engine first.');
+        //         }
+        //     }
+        // };
+        // taxi.drive();
+        // taxi.start();
+        // taxi.drive();
+        // taxi.stop();
+
+
+
+
+
+        // // for (var prop in chevy) {
+        // //     console.log(prop + ": " + chevy[prop]);
+        // // }
+        // console.table(chevy);
+    </script>
+</head>
+
+
+</html>

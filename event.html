@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Image Guess </title>
+
+    <style>
+        body {
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        window.onload = pageLoadedHandler;
+        function pageLoadedHandler() {
+            alert("Pop!");
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <p><strong>Charlie</strong> is <em>obnoxious</em>.</p> -->
+
+    <p>Images</p>
+    <img id="zero" src="zeroblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br><br>
+    <img id="one" src="oneblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br> <br>
+    <img id="two" src="twoblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br><br>
+    <img id="three" src="threeblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br><br>
+    <img id="four" src="fourblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br><br>
+    <img id="five" src="fiveblur.jpg"><br>
+    <p>Guess Name:</p><br>
+    <input type="text" onkeydown="keyM()"><br><br>
+    <script>
+        // function pressKeyHandler() {
+        //     alert("I'm alive!");
+        // }
+        function keyM(e) {
+            if (e.keyCode === 77) {
+                alert("You pressed M");
+            };
+        }
+        document.onkeydown = keyM;
+
+        window.onload = init;
+        function init() {
+            var images = document.getElementsByTagName('img');
+            for (var i = 0; i < images.length; i++) {
+                // images[i].onclick = showAnswer;
+                images[i].onmouseover = showAnswer;
+                images[i].onmouseout = reblur;
+        }
+    };
+        function showAnswer(eventObj) {
+            var image = eventObj.target;
+            var name = image.id;
+            name = name + '.jpg';
+            image.src = name;
+        // setTimeout(reblur, 2000, image)
+        }
+        function reblur (eventObj) {
+            var image = eventObj.target;
+            var name = image.id;
+            name = name + "blur.jpg";
+            image.src = name;
+        }
+        function timerHandler() {
+            alert("Hey what are you doing just sitting there staring at a blank screen?");
+        }
+        setTimeout(timerHandler, 5000);
+    </script>
+</body>
+
+</html>
